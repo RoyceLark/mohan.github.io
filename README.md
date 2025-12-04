@@ -30,7 +30,7 @@
         Expert in AWS and Azure platform services, containerization, and CI/CD pipelines using IaC to accelerate safe releases.
         Designed and implemented resilient, multi-region services and automated deployments that reduced release time and improved availability.
       </p>
-      <p class="note">Source: resume uploaded by the user. fileciteturn0file0</p>
+      <!-- <p class="note">Source: resume uploaded by the user. fileciteturn0file0</p> -->
     </section>
 
     <section id="skills">
@@ -81,13 +81,12 @@
     <section id="resume">
       <h2>Resume</h2>
       <p>Download the original PDF resume (as provided): <a href="resume_mohan_g.pdf" download>Download Resume (PDF)</a>.</p>
-      <p class="small">This site was generated from the resume uploaded during this conversation. fileciteturn0file0</p>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container">
-      <p>© {year} Mohan G — Built for <a href="https://github.com/RoyceLark" target="_blank">RoyceLark</a></p>
+      <p>© {2025} Mohan G — Built for <a href="https://github.com/RoyceLark" target="_blank">RoyceLark</a></p>
     </div>
   </footer>
 
