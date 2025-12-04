@@ -1,98 +1,643 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mohan G — Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohan G - Software Architect & Full-Stack Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s;
+        }
+
+        header .tagline {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        header .subtitle {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            opacity: 0.85;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+
+        .contact-info a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #764ba2;
+        }
+
+        /* Sections */
+        section {
+            background: white;
+            margin: 40px 0;
+            padding: 60px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: #667eea;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        /* About */
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .skill-category {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category ul li {
+            padding: 8px 0;
+            color: #666;
+        }
+
+        .skill-category ul li::before {
+            content: "▹ ";
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* Experience */
+        .timeline {
+            position: relative;
+            padding: 0 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+        }
+
+        .timeline-item h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item .company {
+            color: #764ba2;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item .date {
+            color: #999;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .timeline-item ul {
+            margin-left: 20px;
+            color: #666;
+        }
+
+        .timeline-item ul li {
+            margin-bottom: 8px;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .project-card {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid #667eea;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .project-card .company {
+            color: #764ba2;
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .project-card .date {
+            color: #999;
+            font-size: 0.85em;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Certifications */
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .cert-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .cert-card:hover {
+            transform: scale(1.05);
+        }
+
+        .cert-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .cert-card .issuer {
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .cert-card .date {
+            opacity: 0.8;
+            font-size: 0.9em;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        footer .social-links {
+            margin: 20px 0;
+        }
+
+        footer .social-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+
+        footer .social-links a:hover {
+            color: #667eea;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            header .tagline {
+                font-size: 1.1em;
+            }
+
+            section h2 {
+                font-size: 2em;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="container">
-      <h1>Mohan G</h1>
-      <p class="subtitle">Software Architect • Full‑stack Developer • CI/CD Expert</p>
-      <p class="contact">Bangalore, India · <a href="mailto:mohancanarys@gmail.com">mohancanarys@gmail.com</a> · +91 90087 51562</p>
-      <nav class="nav">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#resume" class="cta">Resume (PDF)</a>
-      </nav>
-    </div>
-  </header>
+    <header>
+        <div class="container">
+            <h1>Mohan G</h1>
+            <p class="tagline">Software Architect | Full-Stack Developer | CI/CD Expert</p>
+            <p class="subtitle">Cloud architect with 10+ years building scalable, microservices-based systems</p>
+            <div class="contact-info">
+                <a href="mailto:mohancanarys@gmail.com">📧 Email</a>
+                <a href="tel:+919008751562">📱 +91 900 875 1562</a>
+                <a href="https://www.linkedin.com/in/mohan-g9008751562/" target="_blank">💼 LinkedIn</a>
+                <a href="https://github.com/RoyceLark" target="_blank">💻 GitHub</a>
+            </div>
+        </div>
+    </header>
 
-  <main class="container">
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
     <section id="about">
-      <h2>About</h2>
-      <p>
-        Cloud architect and hands-on delivery lead with 10+ years building scalable, microservices-based systems.
-        Expert in AWS and Azure platform services, containerization, and CI/CD pipelines using IaC to accelerate safe releases.
-        Designed and implemented resilient, multi-region services and automated deployments that reduced release time and improved availability.
-      </p>
-      <!-- <p class="note">Source: resume uploaded by the user. fileciteturn0file0</p> -->
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>
+                    I'm a seasoned cloud architect and hands-on delivery lead with over 10 years of experience building scalable, microservices-based systems. My expertise spans AWS and Azure platform services, containerization, and CI/CD pipelines using Infrastructure as Code to accelerate safe releases.
+                </p>
+                <p style="margin-top: 20px;">
+                    I specialize in designing and implementing resilient, multi-region services and automated deployments that reduce release time and improve availability for critical applications. I'm skilled at translating business objectives into cloud-native architectures while optimizing performance, security, and cost for high-throughput distributed systems.
+                </p>
+                <p style="margin-top: 20px;">
+                    <strong>Location:</strong> Bangalore, Karnataka, India | Open to Remote, Relocation & Travel
+                </p>
+            </div>
+        </div>
     </section>
 
     <section id="skills">
-      <h2>Skills</h2>
-      <div class="skills-grid">
-        <div><strong>Cloud:</strong> AWS (Expert), Azure, GCP</div>
-        <div><strong>Languages:</strong> C#, .NET / ASP.NET Core, Node.js, GraphQL</div>
-        <div><strong>Databases:</strong> DynamoDB, MySQL, MongoDB, Cassandra</div>
-        <div><strong>DevOps:</strong> Kubernetes, CI/CD, Docker, IaC</div>
-        <div><strong>Tools:</strong> Visual Studio, Linux, Windows</div>
-        <div><strong>AI/ML:</strong> RAG-based Visual Studio extensions, AI-driven code review in CI/CD</div>
-      </div>
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>☁️ Cloud Platforms</h3>
+                    <ul>
+                        <li>AWS (Expert)</li>
+                        <li>Azure (Proficient)</li>
+                        <li>Google Cloud Platform (Proficient)</li>
+                        <li>Multi-region architectures</li>
+                        <li>Cost optimization strategies</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>💻 Languages & Frameworks</h3>
+                    <ul>
+                        <li>C# (Expert)</li>
+                        <li>.Net ML (Expert)</li>
+                        <li>.NET 8/9/10 (Expert)</li>
+                        <li>.NET / ASP.NET Core (Proficient)</li>
+                        <li>.NET Core Microservices (Proficient)</li>
+                        <li>Node.js (Proficient)</li>
+                        <li>GraphQL (Proficient)</li>
+                        <li>Angular 12 and later</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🗄️ Databases</h3>
+                    <ul>
+                        <li>DynamoDB (Proficient)</li>
+                        <li>SQL / RDBMS (Proficient)</li>
+                        <li>MySQL (Proficient)</li>
+                        <li>MongoDB (Proficient)</li>
+                        <li>Cassandra (Proficient)</li>
+                        <li>AWS RDS (Proficient)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🔧 DevOps & CI/CD</h3>
+                    <ul>
+                        <li>Kubernetes (Proficient)</li>
+                        <li>CI/CD Pipelines (Proficient)</li>
+                        <li>Infrastructure as Code</li>
+                        <li>AI-assisted code review</li>
+                        <li>GitLab CI/CD</li>
+                        <li>Automated deployments</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🤖 AI / ML</h3>
+                    <ul>
+                        <li>Implemented RAG-based Visual Studio extensions</li>
+                        <li>VS 2017, 2022, 2026 support</li>
+                        <li>AI-driven code review</li>
+                        <li>GitLab CI/CD integration</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🛠️ Tools & Systems</h3>
+                    <ul>
+                        <li>Visual Studio (2017, 2022, 2026)</li>
+                        <li>Linux (Proficient)</li>
+                        <li>Windows (Proficient)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="projects">
-      <h2>Selected Projects</h2>
-      <article>
-        <h3>CPH (Concentrix Pay Hub)</h3>
-        <p>Payroll platform for the PH region. Responsibilities: architecture, migration to .NET Core 7, pipelines, centralized logging.</p>
-      </article>
-      <article>
-        <h3>OWB (Operation Work Bench)</h3>
-        <p>Financial services platform—microservices architecture with Angular front-end. Responsible for architecture, design and development.</p>
-      </article>
-      <article>
-        <h3>SBV (Sterling Background Verification)</h3>
-        <p>Background verification platform involving AWS Lambda, S3, DynamoDB and SQS integrations.</p>
-      </article>
-      <p class="more">More projects and code available on <a href="https://github.com/RoyceLark" target="_blank">GitHub: RoyceLark</a>.</p>
+        <div class="container">
+            <h2>Key Projects</h2>
+            <div class="projects-grid">
+			
+				<div class="project-card">
+                    <h3> CxView (Concentrix View)</h3>
+                    <div class="company">Concentrix</div>
+                    <div class="date">August 2025 - Present</div>
+                    <p>
+                        CxView is an in-house Windows/Mac tool that monitors site accessibility, enforces access restrictions on client machines, and reports CPU, memory, network, and GPU utilization. It provides an admin portal view and sends alerts for unauthorized access.
+                    </p>
+                </div>
+                <div class="project-card">
+                    <h3>CPH (Concentrix Pay Hub)</h3>
+                    <div class="company">Concentrix</div>
+                    <div class="date">January 2022 - Present</div>
+                    <p>
+                        Payroll platform built for the PH region with plans to evolve to CNX locations. Led architecture, design, and upgrade from .NET Core 2.2 to 8.0, cicd pipeline creation, and building centralized logging system (graffana and loki logs). Solution Architect role with POC implementation and full-stack development.
+                    </p>
+                </div>
+
+                <div class="project-card">
+                    <h3>OWB (Operation Work Bench)</h3>
+                    <div class="company">Mphasis</div>
+                    <div class="date">June 2019 - January 2022</div>
+                    <p>
+                        Financial services platform with Margin, C&SM, and UIM services. Architected microservices solution with Angular 8 frontend. Led design, coding, testing, and deployment while adhering to functional and non-functional requirements. Received client appreciation as a FAST Learner/Developer.
+                    </p>
+                </div>
+
+                <div class="project-card">
+                    <h3>SBV (Sterling Background Verification)</h3>
+                    <div class="company">Mphasis</div>
+                    <div class="date">August 2018 - June 2019</div>
+                    <p>
+                        Background verification fulfillment system handling Education, Reference, CRIM, Employment Credentials. As full-stack developer, built APIs, Lambda functions, and microservices integration with AWS services (S3, DynamoDB, SQS). Received client appreciation for rapid implementation.
+                    </p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Delsey Sales-Rep Portal</h3>
+                    <div class="company">Canarys Automations</div>
+                    <div class="date">May 2017 - July 2018</div>
+                    <p>
+                        B2B web portal enabling customers to place orders. Achieved highest affiliate revenues with industry-best conversion rates. Developed comprehensive e-commerce solution for order management and customer interaction.
+                    </p>
+                </div>
+
+                <div class="project-card">
+                    <h3>IBM ClearQuest to VSTS Integration</h3>
+                    <div class="company">Canarys Automations</div>
+                    <div class="date">May 2017 - November 2017</div>
+                    <p>
+                        Built near real-time data replication system from IBM ClearQuest to VSTS Work Items. Created REST services to expose SQL database to external applications for seamless integration.
+                    </p>
+                </div>
+
+                <div class="project-card">
+                    <h3>IRPAS (SmartZone.Reliance)</h3>
+                    <div class="company">INube Software Solutions</div>
+                    <div class="date">December 2015 - May 2017</div>
+                    <p>
+                        Insurance product with multiple modules providing speed of interaction, convenient transaction processing, and easy information access. Developed backend services supporting comprehensive insurance operations.
+                    </p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Healthcare Management System (HMS)</h3>
+                    <div class="company">Vengai Software Solutions</div>
+                    <div class="date">June 2014 - November 2015</div>
+                    <p>
+                        Web-based software suite designed to improve clinical care quality and hospital management. Featured clinical process analysis, activity-based costing, and electronic prescribing with simple point-and-click navigation.
+                    </p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Clinical Management System</h3>
+                    <div class="company">Vengai Software Solutions</div>
+                    <div class="date">June 2013 - November 2014</div>
+                    <p>
+                        News broadcasting system for medical professionals. Implemented home page integration to keep doctors informed of latest news and ongoing activities relevant to their practice.
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="experience">
-      <h2>Experience</h2>
-      <div class="exp">
-        <h4>Senior Cloud Architect — Acme Cloud Services</h4>
-        <p>Jan 2021 — Present — Led cloud architecture, migration to containerized microservices, cost optimization and observability improvements.</p>
-      </div>
-      <div class="exp">
-        <h4>Full‑Stack Engineer / Platform — Beacon Software</h4>
-        <p>May 2018 — Dec 2020 — Built customer features and internal platform services, CI/CD pipelines and monitoring standards.</p>
-      </div>
-      <div class="exp">
-        <h4>Software Engineer — Innovate Labs</h4>
-        <p>Jun 2015 — Apr 2018 — Backend services, performance improvements and build/test automation.</p>
-      </div>
+    <section id="certifications">
+        <div class="container">
+            <h2>Certifications</h2>
+            <div class="certs-grid">
+                <div class="cert-card">
+                    <h3>AWS Certified Solutions Architect</h3>
+                    <div class="issuer">Amazon Web Services (AWS)</div>
+                    <div class="date">January 2020</div>
+                </div>
+
+                <div class="cert-card">
+                    <h3>AWS Certified Developer</h3>
+                    <div class="issuer">Amazon Web Services (AWS)</div>
+                    <div class="date">January 2020</div>
+                </div>
+
+                <div class="cert-card">
+                    <h3>Azure Solutions Architect</h3>
+                    <div class="issuer">Microsoft</div>
+                    <div class="date">January 2021</div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="resume">
-      <h2>Resume</h2>
-      <p>Download the original PDF resume (as provided): <a href="resume_mohan_g.pdf" download>Download Resume (PDF)</a>.</p>
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="about-content">
+                <p style="font-size: 1.2em; margin-bottom: 30px;">
+                    I'm always interested in discussing new opportunities, challenging projects, and innovative ideas in cloud architecture and full-stack development.
+                </p>
+                <div class="contact-info" style="justify-content: center;">
+                    <a href="mailto:mohancanarys@gmail.com">📧 mohancanarys@gmail.com</a>
+                    <a href="tel:+919008751562">📱 +91 900 875 1562</a>
+                    <a href="https://www.linkedin.com/in/mohan-g9008751562/" target="_blank">💼 LinkedIn</a>
+                    <a href="https://github.com/RoyceLark" target="_blank">💻 GitHub</a>
+                </div>
+                <p style="margin-top: 30px; color: #666;">
+                    📍 Based in Bangalore, Karnataka, India<br>
+                    Open to Remote Work • Open to Relocation • Open to Travel
+                </p>
+            </div>
+        </div>
     </section>
-  </main>
 
-  <footer class="footer">
-    <div class="container">
-      <p>© {2025} Mohan G — Built for <a href="https://github.com/RoyceLark" target="_blank">RoyceLark</a></p>
-    </div>
-  </footer>
-
-<script>
-document.querySelector('.hero p.contact').style.opacity = 0.95;
-document.querySelector('footer p').innerText = document.querySelector('footer p').innerText.replace('{year}', new Date().getFullYear());
-</script>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Mohan G. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/mohan-g9008751562/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/RoyceLark" target="_blank">GitHub</a>
+                <a href="mailto:mohancanarys@gmail.com">Email</a>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
+                Software Architect | Full-Stack Developer | CI/CD Expert
+            </p>
+        </div>
+    </footer>
 </body>
 </html>
