@@ -10,7 +10,7 @@
   <header class="hero">
     <div class="container">
       <h1>Mohan G</h1>
-      <p class="subtitle">Software Architect • Full‑stack Developer • CI/CD Expert</p>
+      <p class="subtitle">Software Architect • Forward-Deployed Engineer • CI/CD Expert</p>
       <p class="contact">Bangalore, India · <a href="mailto:mohancanarys@gmail.com">mohancanarys@gmail.com</a> · +91 90087 51562</p>
       <nav class="nav">
         <a href="#about">About</a>
@@ -26,7 +26,7 @@
     <section id="about">
       <h2>About</h2>
       <p>
-        Cloud architect and hands-on delivery lead with 10+ years building scalable, microservices-based systems.
+        Cloud architect and hands-on delivery lead with 12+ years building scalable, microservices-based systems.
         Expert in AWS and Azure platform services, containerization, and CI/CD pipelines using IaC to accelerate safe releases.
         Designed and implemented resilient, multi-region services and automated deployments that reduced release time and improved availability.
       </p>
